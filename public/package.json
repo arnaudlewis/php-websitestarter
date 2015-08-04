@@ -1,0 +1,14 @@
+{
+  "name": "php-websitestarter-virtuoso",
+  "version": "1.0.0",
+  "description": "websitestarter php from prismicio with framework virtuoso",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "arnaudlewis",
+  "license": "ISC",
+  "dependencies": {
+    "virtuoso" : "0.1.2"
+  }
+}
