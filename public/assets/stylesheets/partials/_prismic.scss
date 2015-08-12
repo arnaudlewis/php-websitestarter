@@ -1,0 +1,45 @@
+@import "../colors";
+
+.main {
+    a.wio-link {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        z-index: 100000;
+        border: 1px solid $black;
+        padding: 0.5rem 0.7rem;
+        border-radius: 50%;
+        opacity: 0.4;
+        width: auto!important;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+      }
+  }
+}
+
+.bloghome {
+    .blog-post {
+        position: relative;
+        a.wio-link {
+            background: none;
+            position: absolute;
+            right: 1rem;
+            top: 4.5rem;
+            opacity: 0.4;
+            border: 1px solid $grey;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: auto!important;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            img {
+                width: 1rem;
+            }
+        }
+    }
+}

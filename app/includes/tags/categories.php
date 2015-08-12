@@ -49,11 +49,6 @@ function single_cat_illustration($display = true)
 
 function the_category($separator = '', $parents = '', $post_id = null)
 {
-    echo get_the_category_list($separator, $parents, $post_id);
-}
-
-function get_the_category_list($separator = '', $parents = '', $post_id = null)
-{
     global $WPGLOBAL, $loop;
     $prismic = $WPGLOBAL['prismic'];
     $doc = $post_id ? $prismic->get_document($post_id) : $loop->current_post();
@@ -73,11 +68,11 @@ function get_the_category_list($separator = '', $parents = '', $post_id = null)
         if ($category) {
             $url = $prismic->linkResolver->resolve($category);
             $label = $category->getText('category.name');
-            array_push($strings, '<a class="category" href="'.$url.'">'.$label.'</a>');
+            if($label && strlen($label) > 0) array_push($strings, '<a class="category" href="'.$url.'">'.$label.'</a>');
         }
     }
 
-    return '<span class="categories">'.implode($separator, $strings).'</span>';
+    return count($strings) > 0 ? '<span class="categories">'.implode($separator, $strings).'</span>' : '';
 }
 
 function single_tag_title($prefix = '', $display = true)

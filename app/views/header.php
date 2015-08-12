@@ -1,29 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class=""> <!--<![endif]-->
 <head>
-    <title><?= single_post_title() ?> <?= site_title() ?></title>
+    <title><?= html_doc_title() ?></title>
+    
     <link rel="alternate" type="application/rss+xml" title="<?= site_title() ?>'s Feed" href="/feed" />
-    <link rel="stylesheet" href="/assets/reset.css">
-    <link rel="stylesheet" href="/assets/common.css">
-    <link rel="stylesheet" href="/assets/main.css">
-    <link rel="stylesheet" href="/assets/blog.css">
+    <link rel="stylesheet" href="/node_modules/virtuoso/dist/virtuoso.min.css">
+        <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/node_modules/virtuoso/dist/virtuoso_ie9.min.css"> 
+        <![endif]-->
+    <link rel="stylesheet" href="/assets/dist/main.min.css">
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <script src="/assets/vendor/jquery-1.11.2.min.js"></script>
-
+    <?php while (have_posts()) : the_post(); ?>
+    <?php include('social-meta.php'); ?>
+    <?php endwhile; // end of the loop. ?>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/virtuoso/dist/virtuoso.min.js"></script>
 
     <?php include('prismic.php') ?>
 
-    <?php include('skin/blog.php') ?>
+    <?php include('skin/page.php') ?>
+    <?php include('skin/slices.php') ?>
 
 </head>
-
-<body>
-
-    <div id="right-panel">
-        <?php get_sidebar() ?>
-    </div>
-
-    <div class="main" <?= the_wio_attributes(); ?>>
-        <a id="menu-hamburger" href="#right-panel"></a>

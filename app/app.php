@@ -17,6 +17,8 @@ use Prismic\Api;
 use Prismic\LinkResolver;
 use Prismic\Predicates;
 
+use Starter\Http as Http;
+
 use Suin\RSSWriter\Channel;
 use Suin\RSSWriter\Feed;
 use Suin\RSSWriter\Item;
@@ -32,8 +34,7 @@ require_once 'includes/http.php';
 require_once 'includes/tags/general.php';
 require_once 'includes/tags/social.php';
 require_once 'includes/tags/navigation.php';
-require_once 'includes/tags/posts.php';
-require_once 'includes/tags/pages.php';
+require_once 'includes/tags/document.php';
 require_once 'includes/tags/author.php';
 require_once 'includes/tags/archive.php';
 require_once 'includes/tags/categories.php';
@@ -217,7 +218,7 @@ $app->get('/blog', function () use ($app, $prismic) {
                'author.surname',
                'author.company'
            )
-           ->page(current_page($app))
+           ->page(Http\current_page($app))
            ->orderings('[my.post.date desc]')
            ->submit();
     $skin = $prismic->get_skin();
@@ -542,7 +543,7 @@ $app->get('/blog/:year/:month/:day/:uid', function ($year, $month, $day, $uid) u
 
     $skin = $prismic->get_skin();
 
-    render($app, 'single', array('single_post' => $doc, 'skin' => $skin));
+    render($app, 'post', array('single_post' => $doc, 'skin' => $skin));
 });
 
 $app->post('/contact', function() use ($app, $prismic) {

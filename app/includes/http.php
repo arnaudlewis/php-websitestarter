@@ -1,5 +1,7 @@
 <?php
 
+namespace Starter\Http;
+
 function views_dir()
 {
     return __DIR__.'/../views/';

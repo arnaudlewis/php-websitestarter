@@ -1,7 +1,10 @@
 <?php
 
+namespace Starter\Prismic;
+
 use Prismic\Api;
 use Prismic\Predicates;
+
 
 /**
  * This class contains helpers for the Prismic API. Most of these can't go
@@ -74,8 +77,8 @@ class PrismicHelper
     public function get_ref()
     {
         $api = $this->get_api();
-        $experimentCookie = $this->app->request()->cookies[Prismic\EXPERIMENTS_COOKIE];
-        $previewCookie = $this->app->request()->cookies[Prismic\PREVIEW_COOKIE];
+        $experimentCookie = $this->app->request()->cookies[Api::EXPERIMENTS_COOKIE];
+        $previewCookie = $this->app->request()->cookies[Api::PREVIEW_COOKIE];
         if ($experimentCookie) {
             $experiments = $api->getExperiments();
             $experimentCookie = str_replace(' ', '%20', $experimentCookie);

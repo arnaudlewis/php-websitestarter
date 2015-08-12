@@ -1,24 +1,18 @@
 
-<div class="blog-post" <?= the_wio_attributes() ?>>
+<div class="blog-post col-12" <?= the_wio_attributes() ?>>
 
     <h2 class="blog-post-title">
-
-        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-
+        <a href="<?php the_permalink(); ?>"><?= the_title(); ?></a>
     </h2>
 
-    <p class="blog-post-meta">
-
-        <?= the_date_link() ?>
-
-        <?= the_author_link() ?>
-
-        <?php the_category(', ') ?>
-
-        <?php the_tags('', ', ') ?>
-
+    <p class="blog-post-summary">
+        <?= the_post_summary() ?>
     </p>
 
-    <?php the_content() ?>
+    <p class="blog-post-meta">
+        <?= the_post_metas() ?>
+    </p>
 
 </div>
+
+<hr class="blog-post-separator" />

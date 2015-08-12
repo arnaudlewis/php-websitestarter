@@ -1,1 +1,1 @@
-cd ./public && php -S localhost:8000
+cd ./public && php -S 10.192.2.112:8000

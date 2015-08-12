@@ -1,5 +1,6 @@
 <?php
 
+namespace Starter\Prismic;
 use Prismic\LinkResolver;
 
 /**

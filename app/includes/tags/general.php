@@ -1,5 +1,21 @@
 <?php
 
+use Starter\Http;
+
+// ================== LAYOUT ====================
+function get_sidebar()
+{
+    render_include('sidebar');
+}
+
+function get_header() {
+    render_include('header');
+}
+
+function get_footer() {
+    render_include('footer');
+}
+
 /**
  * The way the tags are written can lead to the same request being done several times,
  * so make sure that APC is activated so Prismic's default cache is used
@@ -36,9 +52,8 @@ function bloginfo($show = 'name')
 function site_title()
 {
     global $WPGLOBAL;
-    $prismic = $WPGLOBAL['prismic'];
-
-    return $prismic->config('site.title');
+    $skin = the_skin();
+    return $skin && $skin->getText("skin.site_title") ? $skin->getText("skin.site_title") : $WPGLOBAL['prismic']->config("site.title");
 }
 
 function home_url($path = '')
@@ -78,19 +93,15 @@ function home_link($label, $attrs = array())
     return _make_link('/', $label, $attrs);
 }
 
-function get_sidebar()
+function bloghome_link($label, $attrs = array())
 {
-    render_include('sidebar');
-}
+    global $WPGLOBAL;
+    $app = $WPGLOBAL['app'];
+    if ($app->request->getPath() == '/blog') {
+        $attrs['class'] = isset($attrs['class']) ? ($attrs['class'].' active') : 'active';
+    }
 
-function get_header()
-{
-    render_include('header');
-}
-
-function get_footer()
-{
-    render_include('footer');
+    return _make_link('/blog', $label, $attrs);
 }
 
 function get_search_query()
@@ -119,15 +130,6 @@ function get_calendar()
     $prismic = $WPGLOBAL['prismic'];
 
     return $prismic->get_calendar();
-}
-
-function get_template_part($slug, $name = null)
-{
-    if ($name) {
-        render_include($slug.'-'.$name);
-    } else {
-        render_include($slug);
-    }
 }
 
 function is_search()
@@ -265,15 +267,13 @@ function blog_home_description()
     return blog_home()->getText('bloghome.description');
 }
 
-function blog_home_image_url()
+function blog_home_background_illustration()
 {
     global $WPGLOBAL;
     $prismic = $WPGLOBAL['prismic'];
     if (!blog_home()) {
-        return '';
+        return;
     }
-    $image = blog_home()->getImage('bloghome.image');
-    if ($image) {
-        return $image->getMain()->getUrl();
-    }
+    $illustration = blog_home()->getImage('bloghome.background_illustration');
+    return $illustration && $illustration->getMain() ? $illustration->getMain()->getUrl() : null;
 }

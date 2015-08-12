@@ -1,5 +1,7 @@
 <?php
 
+namespace Starter\Error;
+
 function errorpage_title($errorpage)
 {
     return $errorpage ? $errorpage->getText('errorpage.headline') : '';

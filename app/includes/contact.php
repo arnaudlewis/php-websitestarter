@@ -1,5 +1,7 @@
 <?php
 
+namespace Starter\Mail;
+
 function mailgun_pubkey()
 {
     global $WPGLOBAL;
