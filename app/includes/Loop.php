@@ -1,7 +1,5 @@
 <?php
 
-namespace Starter\Loop;
-
 /**
  * This class is a stateful object to iterate on the posts present on a given page.
  * See how it is used in the default views for usage example.

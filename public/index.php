@@ -1,7 +1,5 @@
 <?php
 
-use Starter\Prismic;
-
 require_once '../vendor/autoload.php';
 require_once '../app/LinkResolver.php';
 require_once '../app/includes/PrismicHelper.php';
@@ -34,7 +32,7 @@ $app = new \Slim\Slim(
       'mailgun.domain'  => MAILGUN_DOMAIN
     )
 );
-$prismic = new Starter\Prismic\PrismicHelper($app);
+$prismic = new PrismicHelper($app);
 
 global $WPGLOBAL;
 $WPGLOBAL = array(

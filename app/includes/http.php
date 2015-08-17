@@ -1,7 +1,5 @@
 <?php
 
-namespace Starter\Http;
-
 function views_dir()
 {
     return __DIR__.'/../views/';
@@ -29,11 +27,6 @@ function render($app, $page, $data = array())
         }
     }
 
-    // Optional helpers that theme developers can provide
-    try {
-        include_once views_dir().'/functions.php';
-    } catch (Exception $ex) {
-    }
     $file_path = views_dir().'/'.$page.'.php';
     if (file_exists($file_path)) {
         require $file_path;

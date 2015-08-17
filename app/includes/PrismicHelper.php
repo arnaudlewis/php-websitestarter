@@ -1,10 +1,7 @@
 <?php
 
-namespace Starter\Prismic;
-
 use Prismic\Api;
 use Prismic\Predicates;
-
 
 /**
  * This class contains helpers for the Prismic API. Most of these can't go

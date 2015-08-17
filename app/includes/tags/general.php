@@ -1,7 +1,5 @@
 <?php
 
-use Starter\Http;
-
 // ================== LAYOUT ====================
 function get_sidebar()
 {

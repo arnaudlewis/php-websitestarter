@@ -1,7 +1,7 @@
 <?php
 
-namespace Starter\Prismic;
 use Prismic\LinkResolver;
+use Prismic\Fragment\Link;
 
 /**
  * The link resolver is the code building URLs for pages corresponding to

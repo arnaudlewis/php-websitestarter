@@ -17,8 +17,6 @@ use Prismic\Api;
 use Prismic\LinkResolver;
 use Prismic\Predicates;
 
-use Starter\Http as Http;
-
 use Suin\RSSWriter\Channel;
 use Suin\RSSWriter\Feed;
 use Suin\RSSWriter\Item;
@@ -218,7 +216,7 @@ $app->get('/blog', function () use ($app, $prismic) {
                'author.surname',
                'author.company'
            )
-           ->page(Http\current_page($app))
+           ->page(current_page($app))
            ->orderings('[my.post.date desc]')
            ->submit();
     $skin = $prismic->get_skin();
